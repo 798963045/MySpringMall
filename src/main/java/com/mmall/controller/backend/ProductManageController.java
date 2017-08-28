@@ -111,7 +111,7 @@ public class ProductManageController {
 
     @RequestMapping("upload.do")
     @ResponseBody
-    public ServerResponse upload(HttpSession session, String productName, @RequestParam(value = "upload_file",required = false)MultipartFile file, HttpServletRequest request){
+    public ServerResponse upload(HttpSession session,@RequestParam(value = "upload_file",required = false)MultipartFile file, HttpServletRequest request){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user==null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录管理员");
@@ -119,7 +119,7 @@ public class ProductManageController {
         if(iUserService.checkAdminRole(user).isSuccess()){
            String path=request.getSession().getServletContext().getRealPath("upload");
             String targetFileName=iFileService.upload(file,path);
-            String url= PropertiesUtil.getProperty("ftp.server.http.prefix"+targetFileName);
+            String url= PropertiesUtil.getProperty("ftp.server.http.prefix")+targetFileName;
 
             Map fileMap= Maps.newHashMap();
             fileMap.put("uri",targetFileName);

@@ -68,6 +68,7 @@ public class FTPUtil {
 
     private boolean connectServer(String ip,int port,String user,String pwd){
         boolean isSuccess=false;
+        ftpClient=new FTPClient();
         try {
             ftpClient.connect(ip);
             isSuccess=ftpClient.login(user,pwd);
