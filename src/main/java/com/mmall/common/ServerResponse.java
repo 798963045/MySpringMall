@@ -24,7 +24,7 @@ public class ServerResponse<T> implements Serializable{
         this.data=data;
     }
     private ServerResponse(int status,String msg,T data){
-        this.data=data;
+        this.status=status;
         this.msg=msg;
         this.data=data;
     }
