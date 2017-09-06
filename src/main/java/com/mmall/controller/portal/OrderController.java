@@ -43,7 +43,7 @@ public class OrderController {
         return iOrderService.createOrder(user.getId(),shippingId);
     }
 
-    @RequestMapping("cancel.do'")
+    @RequestMapping("cancel.do")
     @ResponseBody
     public ServerResponse cancel(HttpSession session,Long orderNo){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
@@ -53,7 +53,7 @@ public class OrderController {
         return iOrderService.cancel(user.getId(),orderNo);
     }
 
-    @RequestMapping("get_order_cart_product.do'")
+    @RequestMapping("get_order_cart_product.do")
     @ResponseBody
     public ServerResponse getOrderCartProduct(HttpSession session,Long orderNo){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
@@ -63,7 +63,7 @@ public class OrderController {
         return iOrderService.getOrderCartProduct(user.getId());
     }
 
-    @RequestMapping("detail.do'")
+    @RequestMapping("detail.do")
     @ResponseBody
     public ServerResponse detail(HttpSession session,Long orderNo){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
@@ -73,7 +73,7 @@ public class OrderController {
         return iOrderService.getOrderDetail(user.getId(),orderNo);
     }
 
-    @RequestMapping("list.do'")
+    @RequestMapping("list.do")
     @ResponseBody
     public ServerResponse detail(HttpSession session, @RequestParam(value = "pageNum",defaultValue = "1")int pageNum,@RequestParam(value = "pageSize",defaultValue = "10")int pageSize){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
